@@ -25,7 +25,7 @@ const Categories: React.FC<Props> = ({ data, handleCategoryChange }) => (
                 className={`${className}__item`}
                 onClick={() => handleCategoryChange(category!)}
               >
-                {category} ({category})
+                {category}
               </li>
             )
         )}

@@ -8,7 +8,13 @@
 }
 
 .RandomJoke__status {
-    margin-top: 40px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    height: 50%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+    color: #2cb84b;
 }
 
 .RandomJoke__title {
