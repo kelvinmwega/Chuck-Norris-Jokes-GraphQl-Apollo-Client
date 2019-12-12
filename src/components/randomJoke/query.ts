@@ -4,6 +4,7 @@ export const RANDOM_JOKE = gql`
   query randomJoke($category: String!) {
     joke(category: $category) {
       value
+      icon_url
     }
   }
 `;

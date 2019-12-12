@@ -15,6 +15,7 @@ const RandomJoke: React.FC<Props> = ({ data }) => {
 
   return (
     <div className={className}>
+      
       {data.joke && data.joke.value && (
         <p className={`${className}__status`}>{data.joke.value}</p>
       )}

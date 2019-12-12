@@ -8,7 +8,11 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/"
+  uri: "http://localhost:4000/graphql/",
+  onError: ({ networkError, graphQLErrors }) => {
+    console.log('graphQLErrors', graphQLErrors)
+    console.log('networkError', networkError)
+  }
 });
 
 // ReactDOM.render(<App />, document.getElementById("root"));

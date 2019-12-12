@@ -19,11 +19,11 @@ const RandomnJokeContainer = ({ category }: OwnProps) => {
   }
 
   if (error) {
-    return <div>ERROR</div>;
+    return <div>Got Jokes? ... Coz I don't :-(</div>;
   }
 
   if (!data) {
-    return <div>Got Jokes? ....</div>;
+    return <div>Got Jokes? ... Coz I don't :-(</div>;
   }
 
   return <RandomJoke data={data} />;

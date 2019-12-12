@@ -13,30 +13,48 @@ export type Scalars = {
   Boolean: boolean,
   Int: number,
   Float: number,
-  /** The `Upload` scalar type represents a file upload. */
-  Upload: any,
+};
+
+/** Object representing Joke */
+export type Joke = {
+   __typename?: 'Joke',
+  id: Scalars['String'],
+  value: Scalars['String'],
+  url: Scalars['String'],
+  icon_url: Scalars['String'],
+  categories: Array<Scalars['String']>,
+};
+
+export type LoginResponse = {
+   __typename?: 'LoginResponse',
+  accessToken: Scalars['String'],
+};
+
+export type Mutation = {
+   __typename?: 'Mutation',
+  Register: Scalars['Boolean'],
+  Login: LoginResponse,
 };
 
 
-export enum CacheControlScope {
-  Public = 'PUBLIC',
-  Private = 'PRIVATE'
-}
+export type MutationRegisterArgs = {
+  password: Scalars['String'],
+  email: Scalars['String'],
+  name: Scalars['String']
+};
 
-export type Joke = {
-   __typename?: 'Joke',
-  id: Scalars['ID'],
-  value: Scalars['String'],
-  url?: Maybe<Scalars['String']>,
-  icon_url?: Maybe<Scalars['String']>,
-  categories?: Maybe<Array<Scalars['String']>>,
+
+export type MutationLoginArgs = {
+  password: Scalars['String'],
+  email: Scalars['String']
 };
 
 export type Query = {
    __typename?: 'Query',
-  _?: Maybe<Scalars['String']>,
-  joke?: Maybe<Joke>,
-  categories?: Maybe<Array<Scalars['String']>>,
+  status: Scalars['String'],
+  Me: Scalars['String'],
+  categories: Array<Scalars['String']>,
+  joke: Joke,
 };
 
 
@@ -44,6 +62,12 @@ export type QueryJokeArgs = {
   category: Scalars['String']
 };
 
+export type User = {
+   __typename?: 'User',
+  id: Scalars['ID'],
+  name: Scalars['String'],
+  email: Scalars['String'],
+};
 
 export type JokesCategoriesQueryVariables = {};
 
@@ -60,10 +84,10 @@ export type RandomJokeQueryVariables = {
 
 export type RandomJokeQuery = (
   { __typename?: 'Query' }
-  & { joke: Maybe<(
+  & { joke: (
     { __typename?: 'Joke' }
-    & Pick<Joke, 'value'>
-  )> }
+    & Pick<Joke, 'value' | 'icon_url'>
+  ) }
 );
 
 
@@ -118,6 +142,7 @@ export const RandomJokeDocument = gql`
     query randomJoke($category: String!) {
   joke(category: $category) {
     value
+    icon_url
   }
 }
     `;
